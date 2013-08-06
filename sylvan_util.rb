@@ -1,7 +1,12 @@
 module SylvanUtil
 
   ##################################################
-  module ClassMethods
+  class << self
+
+    #@return path to first file with name, disregarding extension
+    def file_path_search(dir, file_name)
+      Dir.glob(File.join(dir, "#{file_name}.*")).first
+    end
 
     # get a random record from a table
     def random_row(model)
@@ -15,5 +20,4 @@ module SylvanUtil
       f.close
     end
   end
-
 end
